@@ -1,0 +1,17 @@
+{% extends 'Main.HTML' %}
+{% block body %}
+<p>
+</p>
+<ul>
+<h2>Questions</h2>
+  {% for Questions in Questions %}
+    <li>{{ Questions}}</li>
+  {% endfor %} 
+</ul>
+<h2>Answers</h2>
+<ul>
+  {% for Answers in Answers %}
+    <li>{{ Answers}}</li>
+  {% endfor %} 
+</ul>
+{% endblock body %}

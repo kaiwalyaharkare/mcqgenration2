@@ -1,0 +1,21 @@
+{% extends 'Main.HTML' %}
+<script src="Main.css "></script>
+{% block body %}
+
+<h2>Covert Text Into MCQS </h2>
+<form method="post">
+{% csrf_token %}
+<label for="Enteredtext"> Enter/Paste Your paragraph </label>
+
+<textarea name ='text'class="form-control" rows="5" id="Enteredtext" placeholder=" Paste or Enter Your Paragrph " minlength="100" maxlength="500"> </textarea>
+
+<div class="form-group">
+  <label for="formGroupExampleInput">Enter Number Of Question</label>
+  <input max='10' min ='1' type="number" name='number' class="form-control" id="formGroupExampleInput" placeholder="Enter Number of Questions">
+</div>
+
+<button  style="align-items: center" class="btn btn-primary" type="submit" >Submit Text </button>
+</form>
+<p>To get Good results please type no questions in proportion to text size  </p>
+       
+{% endblock body%}

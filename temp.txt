@@ -1,0 +1,46 @@
+
+def prepareDf(df):
+    #One-hot encoding
+    wordsDf = oneHotEncodeColumns(df)
+
+
+    #Add missing colums 
+    predictorFeaturesName = 'Data/nb-predictor-features.pkl'
+    featureNames = loadPickle(predictorFeaturesName)
+
+    for feature in featureNames:
+        if feature not in wordsDf.columns:
+            wordsDf[feature] = 0    
+                
+    #Drop unused columns
+    columnsToDrop = ['text', 'titleId', 'paragrapghId', 'sentenceId', 'shape', 'isAnswer']
+    wordsDf = wordsDf.drop(columnsToDrop, axis = 1)
+
+
+    return wordsDf
+
+
+# In[9]:
+
+
+def predictWords(wordsDf, df):
+    
+    predictorPickleName = 'Data/nb-predictor.pkl'
+    predictor = loadPickle(predictorPickleName)
+    
+    y_pred = predictor.predict_proba(wordsDf)
+
+    labeledAnswers = []
+    for i in range(len(y_pred)):
+        labeledAnswers.append({'word': df.iloc[i]['text'], 'prob': y_pred[i][0]})
+    
+    return labeledAnswers
+
+
+# ## *Extract questions*
+
+# In[10]:
+
+glove_file = 'Data/glove.6B.300d.txt'
+tmp_file = 'Data/word2vec-glove.6B.300d.txt'
+model = None

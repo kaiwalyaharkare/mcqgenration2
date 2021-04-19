@@ -1,0 +1,17 @@
+<<<<<<< HEAD
+pandas==1.2.4
+spacy==2.2.0
+numpy==1.20.2
+Django==3.2
+gensim==4.0.1
+ipython==7.22.0
+=======
+numpy
+Django
+gensim
+ipython
+pandas>=1.2.3
+spacy==2.2.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz#egg=en_core_web_sm
+gensim>=3.8.3
+>>>>>>> e04eb53fcc38e8fd2ba77d1485d31b9edb31f2d6
